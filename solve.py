@@ -35,7 +35,6 @@ function_mapping = {
 
 def chooseProblem(day, part): 
     returnfunction = f'day{day:02d}_{part}'
-    print('hiya')
     print(returnfunction)
     return None 
 
@@ -51,5 +50,5 @@ if __name__ == '__main__':
     args = get_args()
     if args.input == None: 
         inputfile = Path(inputfolder, f'day{args.day:02d}.txt')
-    print(inputfile)
+    print(f'The input file path is: {inputfile.name} and is located in directory: {inputfile.stem}')
     chooseProblem(args.day, args.part)
