@@ -9,8 +9,11 @@ using namespace std;
 
 // Constructors 
 
-Dailypuzzle::Dailypuzzle(string myfilename, int myday) {
-    day = myday; 
+Dailypuzzle::Dailypuzzle() { 
+    filename = "day01.txt"; 
+}
+
+Dailypuzzle::Dailypuzzle(string myfilename) {
     filename = myfilename; 
 } 
 

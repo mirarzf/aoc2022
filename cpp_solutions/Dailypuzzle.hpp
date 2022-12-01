@@ -6,14 +6,13 @@
 
 class Dailypuzzle { 
     protected: 
-    // std::stringstream inputss; 
     std::string filename; 
-    int day; 
 
     public: 
 
     // Constructors 
-    Dailypuzzle(std::string myfilename, int myday); 
+    Dailypuzzle(); 
+    Dailypuzzle(std::string myfilename); 
 
     // Getters 
     virtual int getSolution(int puzzlepart) const; 
