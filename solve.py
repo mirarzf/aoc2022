@@ -2,11 +2,12 @@ import argparse
 from pathlib import Path
 
 from python_solutions import *
+import python_solutions as ps
 
 inputfolder = Path('./input')
 
 function_mapping = { 
-    # 'day01': python_solutions.day01, 
+    'day01': ps.day01.solve, 
     # 'day02': python_solutions.day02, 
     # 'day03': python_solutions.day03, 
     # 'day04': python_solutions.day04, 
@@ -33,10 +34,10 @@ function_mapping = {
     # 'day25': python_solutions.day25, 
 }
 
-def chooseProblem(day, part): 
-    returnfunction = f'day{day:02d}_{part}'
-    print(returnfunction)
-    return None 
+def chooseProblem(day, part, inputfile): 
+    returnfunction = f'day{day:02d}'
+    f = function_mapping[returnfunction]
+    return f(inputfile, part) 
 
 def get_args():
     parser = argparse.ArgumentParser(description='Choose the day problem and input')
@@ -49,6 +50,8 @@ def get_args():
 if __name__ == '__main__': 
     args = get_args()
     if args.input == None: 
-        inputfile = Path(inputfolder, f'day{args.day:02d}.txt')
-    print(f'The input file path is: {inputfile.name} and is located in directory: {inputfile.stem}')
-    chooseProblem(args.day, args.part)
+        inputfile = Path(inputfolder / f'day{args.day:02d}.txt')
+    else: 
+        inputfile = args.input 
+    print(f'The input file path is: {inputfile.name} and is located in directory: {inputfile.parent}')
+    print(f'The solution to problem of day {args.day} part {args.part} is {chooseProblem(args.day, args.part, inputfile)}. ')
