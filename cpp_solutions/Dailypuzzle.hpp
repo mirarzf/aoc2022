@@ -16,7 +16,7 @@ class Dailypuzzle {
     Dailypuzzle(std::string myfilename, int myday); 
 
     // Getters 
-    int getSolution(int puzzlepart); 
+    virtual int getSolution(int puzzlepart) const; 
     std::string getFilename(); 
     std::stringstream getStringstreamFromFile(); 
 }; 

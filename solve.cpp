@@ -6,6 +6,9 @@
 
 using namespace std;
 
+int retrieveSolution(Dailypuzzle const& dailypuzzle, int puzzlepart) { 
+    return dailypuzzle.getSolution(puzzlepart); 
+}
 
 int main () { 
     /* Instantiation of the file */ 
@@ -22,9 +25,9 @@ int main () {
     cout << "Currently calculating the solution... \n"; 
 
     // Solution to puzzle 1
-    cout << "The solution to part one is " << puzzle.getSolution(1) << ". \n"; 
+    cout << "The solution to part one is " << retrieveSolution(puzzle, 1) << ". \n"; 
     // Solution to puzzle 2
-    cout << "The solution to part two is " << puzzle.getSolution(2) << ". \n"; 
+    cout << "The solution to part two is " << retrieveSolution(puzzle, 2) << ". \n"; 
 
     cout << "Tap x and enter to close the program. \n";
     char wait;

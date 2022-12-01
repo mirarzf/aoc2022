@@ -16,7 +16,7 @@ Dailypuzzle::Dailypuzzle(string myfilename, int myday) {
 
 // Getters 
 
-int Dailypuzzle::getSolution(int puzzlepart) {
+int Dailypuzzle::getSolution(int puzzlepart) const {
     if (puzzlepart == 1) {
         return 1; 
     } else { 
