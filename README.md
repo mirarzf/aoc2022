@@ -1,6 +1,6 @@
 # Advent of Code 2022
 My C++ wannabe and Python solutions for the advent of code 2022. 
-Link here: [Advent of Code 2022](https://adventofcode.com/2022/)
+Link of AoC here: [Advent of Code 2022](https://adventofcode.com/2022/)
 
 ## How to use this repository? 
 This repository is mainly personal as I am learning while solving the daily puzzles from AoC 2022. You can use the solutions in this repository for comparison. 
