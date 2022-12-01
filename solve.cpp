@@ -29,7 +29,6 @@ int main () {
     cout << "Tap x and enter to close the program. \n";
     char wait;
     cin >> wait; 
-    cin.ignore(); 
 
     return 0; 
 }
