@@ -6,7 +6,7 @@
 
 using namespace std;
 
-int retrieveSolution(Dailypuzzle const& dailypuzzle, int puzzlepart) { 
+int retrieveSolution(Dailypuzzle& dailypuzzle, int puzzlepart) { 
     return dailypuzzle.getSolution(puzzlepart); 
 }
 

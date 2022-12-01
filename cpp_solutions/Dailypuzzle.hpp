@@ -5,7 +5,7 @@
 #include <string>
 
 class Dailypuzzle { 
-    private: 
+    protected: 
     // std::stringstream inputss; 
     std::string filename; 
     int day; 
