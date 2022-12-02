@@ -7,10 +7,6 @@ from pysolutions import Dailypuzzle
 
 inputfolder = Path('./input')
 
-def chooseProblem(day, part, inputfile): 
-    puzzle = Dailypuzzle(day, inputfile)
-    return puzzle.solve(part) 
-
 def get_args():
     parser = argparse.ArgumentParser(description='Choose the day problem and input')
     parser.add_argument('day', metavar='DAY', type=int, help='Day number of the problem to solve.')
@@ -26,10 +22,12 @@ if __name__ == '__main__':
         inputfile = Path(inputfolder / f'day{args.day:02d}.txt')
     else: 
         inputfile = args.input 
-    print(f'The input file path is: {inputfile.name} and is located in directory: {inputfile.parent}')
+    print(f'The input file path is "{inputfile.name}" and is located in directory "{inputfile.parent}". ')
+    
+    puzzle = Dailypuzzle(args.day, inputfile)
 
     if args.part == None: 
-        print(f'The solution to problem of day {args.day} part 1 is {chooseProblem(args.day, 1, inputfile)}. ')
-        print(f'The solution to problem of day {args.day} part 2 is {chooseProblem(args.day, 2, inputfile)}. ')
+        print(f'The solution to problem of day {args.day} part 1 is {puzzle.solve(1)}. ')
+        print(f'The solution to problem of day {args.day} part 2 is {puzzle.solve(2)}. ')
     else: 
-        print(f'The solution to problem of day {args.day} part {args.part} is {chooseProblem(args.day, args.part, inputfile)}. ')
+        print(f'The solution to problem of day {args.day} part {args.part} is {puzzle.solve(args.part)}. ')
