@@ -1,5 +1,5 @@
-#ifndef DEF_DAILYPUZZLE
-#define DEF_DAILYPUZZLE
+#ifndef DEF_RPS
+#define DEF_RPS
 
 #include <sstream>
 #include <string>
@@ -15,8 +15,11 @@ class Dailypuzzle {
     Dailypuzzle(std::string newinput); 
 
     // Getters 
-    // virtual int getSolution(int puzzlepart) const; 
     int getSolution(int puzzlepart); 
+    
+    // Others 
+    int getRoundResult(std::string opponent, std::string yourself); 
+    int getRoundResult2(std::string opponent, std::string result); 
 }; 
 
 #endif 

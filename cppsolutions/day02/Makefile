@@ -2,7 +2,7 @@ CPPFILES = $(wildcard *.cpp)
 HPPFILES = $(wildcard *.hpp)
 OBJFILES = $(CPPFILES:.cpp=.o)
 
-OUT      = day01
+OUT      = day02
 
 CFLAGS = -Wall -Wextra
 LDLIBS = -lstdc++ -lm
@@ -12,4 +12,4 @@ $(OUT): $(OUT).o $(OBJFILES)
 
 .PHONY: clean
 clean:
-	rm -f $(OBJSOURCE) $(OBJFILES) 
+	rm -rf $(OBJSOURCE) $(OBJFILES) 

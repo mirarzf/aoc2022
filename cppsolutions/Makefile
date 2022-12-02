@@ -12,4 +12,4 @@ $(OUT): $(OUT).o $(OBJFILES)
 
 .PHONY: clean
 clean:
-	rm -f $(OBJFILESINMAIN) $(OBJFILESINCPPSOL) $(OUT)
+	rm -f $(OBJSOURCE) $(OBJFILES) 

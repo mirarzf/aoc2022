@@ -9,13 +9,15 @@
 
 using namespace std;
 
-class Day01 {
+class Dailypuzzle {
     private: 
     string input; 
     
     public: 
     // Constructors 
-    Day01(string newinput) {
+    Dailypuzzle() : input("") {}; 
+
+    Dailypuzzle(string newinput) {
         input = newinput; 
     }
 
@@ -67,14 +69,14 @@ int main () {
     } 
     file.close(); 
     
-    Day01 puzzle = Day01(ss.str()); 
+    Dailypuzzle puzzle = Dailypuzzle(ss.str()); 
 
     cout << "Currently calculating the solution... \n"; 
 
     // Solution to puzzle 1 : 69883 
-    cout << "The solution to part one is " << puzzle.getSolution(1) << ". \n"; 
+    cout << "The solution to part one is: " << puzzle.getSolution(1) << "\n"; 
     // Solution to puzzle 2 : 207576
-    cout << "The solution to part two is " << puzzle.getSolution(2) << ". \n"; 
+    cout << "The solution to part two is: " << puzzle.getSolution(2) << "\n"; 
 
     cout << "Tap x and enter to close the program. \n";
     char wait;
