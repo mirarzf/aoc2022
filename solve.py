@@ -1,5 +1,3 @@
-import sys
-sys.path.append('pysolutions')
 import argparse
 from pathlib import Path
 

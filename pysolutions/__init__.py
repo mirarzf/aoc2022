@@ -1,1 +1,1 @@
-from dailypuzzle import Dailypuzzle
+from .dailypuzzle import Dailypuzzle
