@@ -19,7 +19,7 @@ if __name__ == '__main__':
     if args.input == None: 
         inputfile = Path(inputfolder / f'day{args.day:02d}.txt')
     else: 
-        inputfile = args.input 
+        inputfile = Path(inputfolder / args.input) 
     print(f'The input file path is "{inputfile.name}" and is located in directory "{inputfile.parent}". ')
     
     puzzle = Dailypuzzle(args.day, inputfile)
