@@ -10,7 +10,7 @@ To make the different solutions work, don't forget to put your input in the inpu
 ## C++ Solutions 
 The C++ solutions are available in the folder `cppsolutions`. The code for each solution is available in the folder corresponding to the day. Use the Makefile for the compilation of the solution in the corresponding folder. 
 
-Please ignore the files `solve.cpp`, `Dailypuzzle.cpp`, `Dailypuzzle.hpp` and the `Makefile` in `cpp_solutions` as they mostly serve as templates for each daily solution. Especially, DO NOT try to compile the Makefile. (You will end up with an error most probably.)
+Please ignore the files `solve.cpp`, `Dailypuzzle.cpp`, `Dailypuzzle.hpp` and `Makefile` in `cpp_solutions` as they mostly serve as templates for each daily solution. Compiling `solve.cpp` will most probably end up raising an error. 
 
 ## Python Solutions 
 The Python solutions are available in the folder `pysolutions`. The code for each solution is available in the folder corresponding to the day. Each `solve` function for each day corresponds to 
