@@ -20,11 +20,11 @@ Dailypuzzle::Dailypuzzle(string newinput) {
 
 // Getters 
 int Dailypuzzle::getPriority(char letter) { 
-    int value = int(letter); 
-    if (value >= 97 && value <= 122) { 
-        return value-96; 
-    } else if (value >= 65 && value <= 90) { 
-        return value-38; 
+    int asciicode = int(letter); 
+    if (asciicode >= 97 && asciicode <= 122) { // a to z 
+        return asciicode-96; 
+    } else if (asciicode >= 65 && asciicode <= 90) { // A to Z
+        return asciicode-38; 
     } else {
         return 0; 
     }
