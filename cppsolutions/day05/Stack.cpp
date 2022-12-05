@@ -21,7 +21,30 @@ vector<char> Stack::getContent() {
     return content; 
 }
 
+vector<char> Stack::getLast(int len) { 
+    vector<char> ret; 
+    int n = content.size(); 
+    for (int i = 0; i < len; i++) { 
+        ret.push_back(content[n-1-i]); 
+    }
+    return ret;
+}
+
 // Setters 
 void Stack::setContent(vector<char> newcontent) { 
     content = newcontent; 
+}
+
+void Stack::moveOut(int len) { 
+    for (int i = 0; i < len; i++) { 
+        content.pop_back(); 
+    }
+}
+
+vector<char> Stack::getOut(int len) {
+    vector<char> ret; 
+    for (int i = 0; i < len; i++) { 
+        ret.push_back(content.back()); 
+        content.pop_back(); 
+    }
 }

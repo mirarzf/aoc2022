@@ -19,6 +19,8 @@ class PilesOfStacks {
     // Getters 
     std::vector<Stack> getContent(); 
     std::vector<std::string> getInstructions(); 
+    Stack getStack(int stackNb); 
+    int getNbOfStacks(); 
 
     // Setters 
     void move(std::string instruct); 

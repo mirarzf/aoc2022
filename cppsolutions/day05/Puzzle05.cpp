@@ -4,6 +4,8 @@
 #include <string>
 
 #include "Puzzle05.hpp"
+#include "Stack.hpp"
+#include "PilesOfStacks.hpp"
 
 using namespace std; 
 
@@ -21,14 +23,6 @@ Puzzle05::Puzzle05(string newinput) {
 // }; 
 
 string Puzzle05::getSolution(int puzzlepart) {
-    stringstream inputss(input); 
-    string row; 
-    while (inputss.good()) { 
-        getline(inputss, row); 
-    }
-    if (puzzlepart == 1) {
-        return "1"; 
-    } else { 
-        return "2"; 
-    }
+    PilesOfStacks piles = PilesOfStacks(input); 
+    piles.move(); 
 }
