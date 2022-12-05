@@ -9,15 +9,15 @@
 
 using namespace std;
 
-class Dailypuzzle {
+class Puzzle01 {
     private: 
     string input; 
     
     public: 
     // Constructors 
-    Dailypuzzle() : input("") {}; 
+    Puzzle01() : input("") {}; 
 
-    Dailypuzzle(string newinput) {
+    Puzzle01(string newinput) {
         input = newinput; 
     }
 
@@ -69,7 +69,7 @@ int main () {
     } 
     file.close(); 
     
-    Dailypuzzle puzzle = Dailypuzzle(ss.str()); 
+    Puzzle01 puzzle = Puzzle01(ss.str()); 
 
     cout << "Currently calculating the solution... \n"; 
 
