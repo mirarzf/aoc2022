@@ -42,7 +42,7 @@ Puzzle02::Puzzle02(string newinput) {
 
 // Getters 
 
-int Puzzle02::getSolution(int puzzlepart) {
+string Puzzle02::getSolution(int puzzlepart) {
     int score = 0; 
 
     stringstream inputss(input); 
@@ -62,7 +62,7 @@ int Puzzle02::getSolution(int puzzlepart) {
             score += getRoundResult2(opponent, second); 
         } 
     }
-    return score; 
+    return to_string(score); 
 }
 
 int Puzzle02::getRoundResult(string opponent, string yourself) {

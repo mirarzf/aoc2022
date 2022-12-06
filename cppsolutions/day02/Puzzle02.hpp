@@ -15,7 +15,7 @@ class Puzzle02 {
     Puzzle02(std::string newinput); 
 
     // Getters 
-    int getSolution(int puzzlepart); 
+    std::string getSolution(int puzzlepart); 
     
     // Others 
     int getRoundResult(std::string opponent, std::string yourself); 

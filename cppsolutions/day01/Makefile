@@ -3,6 +3,7 @@ HPPFILES = $(wildcard *.hpp)
 OBJFILES = $(CPPFILES:.cpp=.o)
 
 OUT      = day01
+OBJSOURCE = $(OUT).o
 
 CFLAGS = -Wall -Wextra
 LDLIBS = -lstdc++ -lm

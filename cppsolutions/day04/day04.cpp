@@ -6,7 +6,7 @@
 #include <string> 
 
 // INCLUDE HERE THE NECESSARY CLASSES 
-#include "Dailypuzzle.hpp"
+#include "Puzzle04.hpp"
 
 using namespace std;
 
@@ -32,7 +32,7 @@ int main () {
     file.close(); 
 
     /* Instantiate the puzzle class */
-    Dailypuzzle puzzle = Dailypuzzle(inputss.str()); 
+    Puzzle04 puzzle = Puzzle04(inputss.str()); 
 
     cout << "Currently calculating the solution... \n"; 
 

@@ -13,22 +13,24 @@ Dailypuzzle::Dailypuzzle() : input("") {};
 
 Dailypuzzle::Dailypuzzle(string newinput) {
     input = newinput; 
-} 
+}
 
 // Getters 
 
-// int Dailypuzzle::getSolution(int puzzlepart) const {
+// virtual string Dailypuzzle::getSolution(int puzzlepart) const {
 // }; 
 
-int Dailypuzzle::getSolution(int puzzlepart) {
+string Dailypuzzle::getSolution(int puzzlepart) {
     stringstream inputss(input); 
     string row; 
     while (inputss.good()) { 
         getline(inputss, row); 
     }
+    
+
     if (puzzlepart == 1) {
-        return 1; 
+        return to_string(1); 
     } else { 
-        return 2; 
+        return to_string(2); 
     }
 }

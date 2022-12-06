@@ -1,5 +1,5 @@
-CPPFILES = $(wildcard *.cpp)
-HPPFILES = $(wildcard *.hpp)
+CPPFILES = $(wildcard *.cpp) $(filter-out $(wildcard */day*.cpp), $(wildcard */*.cpp))
+HPPFILES = $(wildcard *.hpp) $(wildcard */*.hpp)
 OBJFILES = $(CPPFILES:.cpp=.o)
 
 OUT      = solve
@@ -7,9 +7,9 @@ OUT      = solve
 CFLAGS = -Wall -Wextra
 LDLIBS = -lstdc++ -lm
 
-$(OUT): $(OUT).o $(OBJFILES) 
-	g++ $(OBJSOURCE) $(OBJFILES) $(LDLIBS) $(CFLAGS) -o $(OUT)
+$(OUT): $(OBJFILES)
+	g++ $(OBJFILES) $(LDLIBS) $(CFLAGS) -o $(OUT)
 
 .PHONY: clean
 clean:
-	rm -f $(OBJSOURCE) $(OBJFILES) 
+	rm -f $(OBJFILES) $(OBJFILESINSUB) 

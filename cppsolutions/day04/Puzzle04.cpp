@@ -18,7 +18,7 @@ Puzzle04::Puzzle04(string newinput) {
 
 // Getters 
 
-int Puzzle04::getSolution(int puzzlepart) {
+string Puzzle04::getSolution(int puzzlepart) {
     stringstream inputss(input); 
     string row; 
     int score = 0; 
@@ -30,5 +30,5 @@ int Puzzle04::getSolution(int puzzlepart) {
             score++; 
         }
     }
-    return score; 
+    return to_string(score); 
 }

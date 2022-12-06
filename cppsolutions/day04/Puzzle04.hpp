@@ -15,7 +15,7 @@ class Puzzle04 {
     Puzzle04(std::string newinput); 
 
     // Getters 
-    int getSolution(int puzzlepart); 
+    std::string getSolution(int puzzlepart); 
 }; 
 
 #endif 

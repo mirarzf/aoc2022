@@ -15,8 +15,8 @@ class Dailypuzzle {
     Dailypuzzle(std::string newinput); 
 
     // Getters 
-    // virtual int getSolution(int puzzlepart) const; 
-    int getSolution(int puzzlepart); 
+    // virtual std::string getSolution(int puzzlepart) const; 
+    std::string getSolution(int puzzlepart); 
 }; 
 
 #endif 

@@ -16,7 +16,7 @@ bool isACapitalLetter(char c) {
 }; 
 
 // function for converting string to integer
-int stringTointeger(string str) {
+int stringToInteger(string str) {
     int dec = 0;
     for (int i = 0; i < str.length(); i++) {
  
@@ -100,7 +100,7 @@ void PilesOfStacks::move(string instruct, int puzzlepart) {
     while (ss.good()) { 
         getline(ss, instructPart, ' '); 
         if (part % 2 == 1) { 
-            instructArray.push_back(stringTointeger(instructPart)-1); 
+            instructArray.push_back(stringToInteger(instructPart)-1); 
         }
         part++; 
     }

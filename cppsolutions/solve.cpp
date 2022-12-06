@@ -6,7 +6,7 @@
 #include <string> 
 
 // INCLUDE HERE THE NECESSARY CLASSES 
-#include "Dailypuzzle.hpp"
+#include "Dailypuzzle.hpp" 
 
 using namespace std;
 
@@ -35,7 +35,7 @@ int main () {
     Dailypuzzle puzzle = Dailypuzzle(inputss.str()); 
 
     cout << "Currently calculating the solution... \n"; 
-
+    
     // Solution to puzzle 1 : answer 1 
     cout << "The solution to part one is: " << puzzle.getSolution(1) << "\n"; 
     // Solution to puzzle 2 : answer 2
