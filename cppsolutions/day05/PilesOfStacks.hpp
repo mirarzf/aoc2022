@@ -21,10 +21,11 @@ class PilesOfStacks {
     std::vector<std::string> getInstructions(); 
     Stack getStack(int stackNb); 
     int getNbOfStacks(); 
+    std::string getLastOfStacks(); 
 
     // Setters 
-    void move(std::string instruct); 
-    void moveAll(); 
+    void move(std::string instruct, int puzzlepart); 
+    void moveAll(int puzzlepart); 
 }; 
 
 #endif 

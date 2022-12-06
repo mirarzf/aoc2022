@@ -16,6 +16,7 @@ class Stack {
     // Getters 
     std::vector<char> getContent(); 
     std::vector<char> getLast(int len); 
+    char getLastChar(); 
 
     // Setters 
     void setContent(std::vector<char> newcontent); 

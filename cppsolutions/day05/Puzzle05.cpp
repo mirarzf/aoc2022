@@ -24,5 +24,7 @@ Puzzle05::Puzzle05(string newinput) {
 
 string Puzzle05::getSolution(int puzzlepart) {
     PilesOfStacks piles = PilesOfStacks(input); 
-    piles.move(); 
+    piles.moveAll(puzzlepart); 
+    string lastOfStacks = piles.getLastOfStacks(); 
+    return lastOfStacks; 
 }

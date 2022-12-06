@@ -30,6 +30,10 @@ vector<char> Stack::getLast(int len) {
     return ret;
 }
 
+char Stack::getLastChar() { 
+    return content.back(); 
+}
+
 // Setters 
 void Stack::setContent(vector<char> newcontent) { 
     content = newcontent; 
@@ -47,4 +51,5 @@ vector<char> Stack::getOut(int len) {
         ret.push_back(content.back()); 
         content.pop_back(); 
     }
+    return ret; 
 }

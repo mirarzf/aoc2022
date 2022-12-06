@@ -7,7 +7,7 @@
 using namespace std; 
 
 // Useful functions 
-bool isALetter(char c) { 
+bool isACapitalLetter(char c) { 
     int i = c; 
     if (i >= 65 && i <= 90) {
         return true; 
@@ -37,19 +37,19 @@ PilesOfStacks::PilesOfStacks(string input) {
     string row; 
     instructions = {}; 
 
-    inputss >> row; 
+    getline(inputss, row); 
     int n = row.length();
-    int nbOfStacks = (n-3)/4; 
-    vector<vector<char>> temp(nbOfStacks); 
+    int nbOfStacks = (n-3)/4+1; 
+    vector<vector<char>> temp(nbOfStacks, vector<char> {}); 
     inputss.str(""); 
     inputss << input; 
-    string instruct; 
 
     while (inputss.good()) {
+        getline(inputss, row); 
         if (row[0] != 'm' && !row.empty()) {
             for (int i = 0; i < nbOfStacks; i++) {
                 int j = i*4+1; 
-                if (isALetter(row[j])) {
+                if (isACapitalLetter(row[j])) {
                     temp[i].push_back(row[j]); 
                 }
             }
@@ -82,29 +82,45 @@ int PilesOfStacks::getNbOfStacks() {
     return content.size(); 
 }
 
+string PilesOfStacks::getLastOfStacks() { 
+    int n = getNbOfStacks(); 
+    string lastOfStacks = ""; 
+    for (int i = 0; i < n; i++) { 
+        lastOfStacks += content[i].getLastChar(); 
+    }
+    return lastOfStacks; 
+}
+
 // Setters 
-void PilesOfStacks::move(string instruct) { 
+void PilesOfStacks::move(string instruct, int puzzlepart) { 
     stringstream ss(instruct); 
     string instructPart; 
     vector<int> instructArray; 
+    int part = 0; 
     while (ss.good()) { 
         getline(ss, instructPart, ' '); 
-        if (!isALetter(instructPart[0])) { 
+        if (part % 2 == 1) { 
             instructArray.push_back(stringTointeger(instructPart)-1); 
         }
+        part++; 
     }
+    instructArray[0]++; 
     Stack toStack = getStack(instructArray[2]);  
 
     vector<char> moving = content[instructArray[1]].getOut(instructArray[0]); 
     vector<char> newToStack = toStack.getContent(); 
-    for (char c: moving) {
-        newToStack.push_back(c); 
+    for (int i = 0; i < instructArray[0]; i++) { 
+        if (puzzlepart == 1) { 
+            newToStack.push_back(moving[i]); 
+        } else { // puzzlepart == 2 
+            newToStack.push_back(moving[instructArray[0]-1-i]); 
+        }
     }
     content[instructArray[2]].setContent(newToStack); 
 }
 
-void PilesOfStacks::moveAll() {
+void PilesOfStacks::moveAll(int puzzlepart) {
     for (string instr: instructions) {
-        move(instr); 
+        move(instr, puzzlepart); 
     }
 }
