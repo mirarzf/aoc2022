@@ -1,5 +1,3 @@
-// THIS FILE IS ONLY A TEMPLATE TO COPY/PASTE 
-
 #include <fstream>
 #include <iostream>
 #include <sstream>
