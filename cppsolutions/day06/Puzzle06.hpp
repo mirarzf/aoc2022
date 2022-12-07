@@ -5,7 +5,7 @@
 #include <string>
 
 class Puzzle06 { 
-    protected: 
+    private: 
     std::string input; 
 
     public: 
