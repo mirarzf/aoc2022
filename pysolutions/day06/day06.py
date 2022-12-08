@@ -1,12 +1,3 @@
-def isAllDifferent(packet): 
-    packetChar = {} 
-    for c in packet: 
-        if c in packetChar.keys(): 
-            return False 
-        else: 
-            packetChar[c] = 1
-    return True 
-
 def solve(inputfile:str, puzzlepart:int): 
     f = open(inputfile, 'r')
     lines = f.readlines() 
@@ -20,7 +11,7 @@ def solve(inputfile:str, puzzlepart:int):
     
     for i in range(0, n-lenmarker): 
         packet = line[i:i+lenmarker]
-        if isAllDifferent(packet): 
+        if len(set(packet)) == lenmarker: 
             return i+lenmarker
     
     return n-1
