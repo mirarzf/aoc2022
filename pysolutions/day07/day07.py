@@ -28,8 +28,7 @@ def solve(inputfile:str, puzzlepart:int):
             else:  
                 # Add file to current directory 
                 # ie update size of all directories in the path of the file 
-                tempDir = str(list(currDir))
-                print(type(tempDir))
+                tempDir = currDir
                 while tempDir != "": 
                     parentsDir[tempDir][1] += int(linesplit[0])
                     print("yay", tempDir, parentsDir[tempDir])
