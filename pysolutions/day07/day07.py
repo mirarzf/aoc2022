@@ -1,10 +1,17 @@
+def pathListToString(pathlist:list): 
+    pathstring = ""
+    for dir in pathlist: 
+        pathstring += dir 
+        pathstring += "/"
+    return pathstring
+
 def solve(inputfile:str, puzzlepart:int): 
     f = open(inputfile, 'r')
     lines = f.readlines() 
     score = 0 
     
-    dirSizes = {"/": 0}
-    currPath = ["/"]
+    dirSizes = {pathListToString(["/"]): 0}
+    currPath = []
 
     for line in lines:  
         linesplit = line.split() 
@@ -18,28 +25,31 @@ def solve(inputfile:str, puzzlepart:int):
                 # Explore parent directory 
                 currPath.pop()
                 # print("on remonte", currPath[-1])
+            print(currPath)
 
         elif line[0] != '$': # ls output    
             if linesplit[0] == "dir": 
                 # Add subdir to list of directories 
-                dirSizes[linesplit[1]] = 0
-                # print("yo", linesplit[1], currPath[-1])
+                subdirpath = pathListToString(currPath + [linesplit[1]])
+                dirSizes[subdirpath] = 0
+                print("yo", subdirpath, currPath[-1])
                 
             else:  
                 # Add file to current directory 
                 # ie update size of all directories in the path of the file 
-                for dir in currPath: 
-                    dirSizes[dir] += int(linesplit[0])
-                    # print(dir, dirSizes[dir])
+                for i in range(len(currPath)): 
+                    dirkey = pathListToString(currPath[:i+1])
+                    dirSizes[dirkey] += int(linesplit[0])
+                    print(dirkey, dirSizes[dirkey])
+                print("meh", currPath[:1])
+        
 
     print("solution part 1")
     if puzzlepart == 1: 
         for dir in dirSizes.keys(): 
             size = dirSizes[dir]
             if size <= 100000: 
-                print(dir, size)
+                # print(dir, size)
                 score += size
-            else: 
-                print(dir, size, "ouin")
         
     return score 
