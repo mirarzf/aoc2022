@@ -32,11 +32,14 @@ def solve(inputfile:str, puzzlepart:int):
                     dirSizes[dir] += int(linesplit[0])
                     # print(dir, dirSizes[dir])
 
+    print("solution part 1")
     if puzzlepart == 1: 
         for dir in dirSizes.keys(): 
             size = dirSizes[dir]
             if size <= 100000: 
                 print(dir, size)
                 score += size
+            else: 
+                print(dir, size, "ouin")
         
     return score 
