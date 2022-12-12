@@ -24,7 +24,7 @@ class Rope:
         self.knots = [(0,0) for i in range(nbOfRopes)]
         self.tailpos = [(0,0)]
 
-    def isAdjactentTo(self, i, j, tail): 
+    def isAdjacentTo(self, i, j, tail): 
         if abs(i-tail[0]) == 2 or abs(j-tail[1]) == 2: 
             return False 
         return True 
@@ -61,7 +61,7 @@ class Rope:
             # Update the knots position 
             # if it won't be adjacent to 
             # the future position of the head 
-            if not self.isAdjactentTo(i, j, self.knots[k]): 
+            if not self.isAdjacentTo(i, j, self.knots[k]): 
                 newpostuple = getNextMove((i,j), self.knots[k])
                 
                 if k == len(self.knots)-1: 

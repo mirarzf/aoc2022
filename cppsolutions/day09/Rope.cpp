@@ -1,6 +1,7 @@
 #include <vector>
 #include <string>
 #include <sstream>
+#include <map>
 // #include <cstdio>
 
 #include "Rope.hpp"
@@ -8,24 +9,22 @@
 using namespace std; 
 
 // Constructors 
-Rope::Rope() { 
-    ncol = 1; 
-    nrow = 1; 
-    mincol = 0; 
-    minrow = 0; 
-    head = {0,0}; 
-    tail = {0,0}; 
-    knotspos = {tail}; 
+Rope::Rope() {
+    nbOfKnots = 2; 
+    knots = {}; 
+    for (int i = 0; i < nbOfKnots; i++) { 
+        knots.push_back(make_pair(0,0));
+    }
+    tailpos[knots[nbOfKnots-1]] = 1;  
 }
 
-Rope::Rope(string inputMoves) { 
-    ncol = 1; 
-    nrow = 1;  
-    mincol = 0; 
-    minrow = 0; 
-    head = {0,0}; 
-    tail = {0,0}; 
-    knotspos = {tail}; 
+Rope::Rope(string inputMoves, int howManyKnots) { 
+    nbOfKnots = howManyKnots; 
+    knots = {}; 
+    for (int i = 0; i < nbOfKnots; i++) { 
+        knots.push_back(make_pair(0,0));
+    }
+    tailpos[knots[nbOfKnots-1]] = 1;  
     stringstream moveSS(inputMoves); 
     string row; 
     while (moveSS) { 
@@ -37,89 +36,103 @@ Rope::Rope(string inputMoves) {
 }
 
 
-// Getters 
+// Getters
 
-pair<int, int> Rope::getHead() { 
-    return head; 
+pair<int, int> Rope::getNextMove(pair<int, int> newheadpos, pair<int, int> tail) { 
+    int hi = newheadpos.first; 
+    int hj = newheadpos.second; 
+    int ti = tail.first; 
+    int tj = tail.second; 
+
+    if (abs(hi-ti) == 2 and abs(hj-tj) == 0) { 
+        // Same column, different rows
+        return make_pair(ti+(hi-ti)/2, tj); 
+    } else if (abs(hi-ti) == 0 and abs(hj-tj) == 2) { 
+        // Same row, different columns 
+        return make_pair(ti, tj+(hj-tj)/2); 
+    } else if (abs(hi-ti) == 2 and abs(hj-tj) == 1) { 
+        // Diagonal, adjacent columns 
+        return make_pair(ti+(hi-ti)/2, tj+(hj-tj)); 
+    } else if (abs(hi-ti) == 1 and abs(hj-tj) == 2) { 
+        // Diagonal, adjacent rows 
+        return make_pair(ti+(hi-ti), tj+(hj-tj)/2); 
+    } else if (abs(hi-ti) == 2 and abs(hj-tj) == 2) { 
+        // Diagonal, nothing adjacent 
+        return make_pair(ti+(hi-ti)/2, tj+(hj-tj)/2); 
+    } 
+
+    return make_pair(0,0); 
 }
 
-pair<int, int> Rope::getTail() { 
-    return tail; 
-}
-
-bool Rope::isTAdjacentTo(int i,  int j) { 
-    if (abs(i-tail.first) > 1 || abs(j-tail.second) > 1) { 
-        return false; 
+bool Rope::isTAdjacentTo(int i,  int j, pair<int, int> tail) { 
+    if (abs(i-tail.first) <= 1 && abs(j-tail.second) <= 1) { 
+        return true; 
     }
-    return true; 
-}
-
-
-vector<int> Rope::getVisitedPositions() { 
-    int nlength = nrow*ncol; 
-    vector<int> gridPos(nlength, 0); 
-    int index = 0; 
-    for (pair<int, int> pos : knotspos) { 
-        index = (pos.first-minrow) * ncol + (pos.second-mincol); 
-        gridPos[index]++; 
-    }
-    return gridPos; 
+    return false; 
 }
 
 long long unsigned int Rope::getNumberOfVisitedPositions() { 
     long long unsigned int score = 0; 
-    vector<int> gridPos = getVisitedPositions(); 
-    for (int nbVisits: gridPos) { 
-        if (nbVisits > 0) { 
-            score++; 
-        }
+    for (auto it = tailpos.begin(); it != tailpos.end(); it++) {
+        score++;
     }
+ 
     return score; 
 }
 
 // Setters 
-void Rope::moveHeadTo(int i, int j) { 
-    // Update nrow, ncol, minrow and mincol if needed 
-    if (i == nrow) { 
-        nrow++; 
-    } else if (i < minrow) { 
-        nrow++; 
-        minrow = i; 
+void Rope::moveHeadTo(char direction) { 
+    vector<pair<int,int>> newpos; 
+    // Calculate the new position of the first head 
+    int i = knots[0].first; 
+    int j = knots[0].second; 
+    
+    if (direction == 'L') { 
+        // Going Left 
+        j--; 
+    } else if (direction == 'R') { 
+        // Going Right 
+        j++; 
+    } else if (direction == 'D') { 
+        // Going Down 
+        i--; 
+    } else if (direction == 'U') { 
+        // Going Up 
+        i++; 
     } 
     
-    if (j == ncol) { 
-        ncol++; 
-    } else if (j < mincol) { 
-        ncol++; 
-        mincol = j; 
+    newpos.push_back(pair<int,int>({i,j})); 
+
+    // Move other knots accordingly 
+    for (int k = 1; k < nbOfKnots; k++) { 
+        i = newpos.back().first; 
+        j = newpos.back().second; 
+         
+        // Update the knot's position if it is 
+        // no longer following the previous knot 
+        // if it is not adjacent to its future position
+        if (!isTAdjacentTo(i, j, knots[k])) { 
+            pair<int, int> newpostuple = getNextMove({i,j}, knots[k]); 
+
+            if (k == nbOfKnots-1) { 
+                // Update the tail positions history 
+                tailpos[newpostuple] = 1; 
+            } 
+            newpos.push_back(newpostuple); 
+        } else { 
+            // The position of the knot doesn't change 
+            newpos.push_back(knots[k]); 
+        }
     }
 
-    // Move Tail accordingly 
-    // Check if the tail is still adjacent 
-    // If yes, tail need not be moved 
-    // Else, it needs to change according head move 
-    // And position should be added to history knotspos 
-    if (!isTAdjacentTo(i, j)) { 
-        tail = pair<int, int>(head); 
-        knotspos.push_back(tail); 
-    } 
-
-    // Update head (we needed the old data to update tail)
-    head = {i, j}; 
+    // Now update knots with the actual new positions 
+    knots = newpos; 
 }
 
 void Rope::move(string moves) { 
     char direction = moves[0]; 
     int numberOfMoving = stoi(moves.substr(2)); 
     for (int ind = 0; ind < numberOfMoving; ind++) { 
-        if (direction == 'R') { 
-            moveHeadTo(head.first, head.second+1); 
-        } else if (direction == 'L') { 
-            moveHeadTo(head.first, head.second-1); 
-        } else if (direction == 'U') { 
-            moveHeadTo(head.first-1, head.second); 
-        } else if (direction == 'D') { 
-            moveHeadTo(head.first+1, head.second); 
-        } 
+        moveHeadTo(direction); 
     }
 }

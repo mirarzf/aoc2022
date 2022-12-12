@@ -18,6 +18,11 @@ Puzzle09::Puzzle09(string newinput) {
 
 // Getters 
 string Puzzle09::getSolution(int puzzlepart) { 
-    Rope rope = Rope(input); 
-    return to_string(rope.getNumberOfVisitedPositions());  
+    if (puzzlepart == 1) { 
+        Rope rope = Rope(input, 2); 
+        return to_string(rope.getNumberOfVisitedPositions()); 
+    } else { // puzzlepart == 2 
+        Rope rope = Rope(input, 10); 
+        return to_string(rope.getNumberOfVisitedPositions()); 
+    }
 };

@@ -35,9 +35,9 @@ int main () {
 
     cout << "Currently calculating the solution... \n"; 
 
-    // Solution to puzzle 1 : 1546 
+    // Solution to puzzle 1 : 6337 
     cout << "The solution to part one is: " << puzzle.getSolution(1) << "\n"; 
-    // Solution to puzzle 2 : answer2
+    // Solution to puzzle 2 : 2455
     cout << "The solution to part two is: " << puzzle.getSolution(2) << "\n"; 
 
     cout << "Tap x and enter to close the program. \n";
