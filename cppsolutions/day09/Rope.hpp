@@ -3,14 +3,13 @@
 
 #include <string>
 #include <vector>
+#include <map>
 
 class Rope { 
     private: 
     std::pair<int, int> head; 
     std::pair<int, int> tail; 
-    std::vector<std::pair<int, int>> knotspos; 
-    int ncol, nrow; 
-    int mincol, minrow; 
+    std::map<std::pair<int, int>, int> knotspos; 
 
     public: 
     // Constructors 
