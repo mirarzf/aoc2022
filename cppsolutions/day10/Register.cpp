@@ -63,7 +63,7 @@ long long int Register::getSumSignalStrengthAt(string input, vector<int> cycleTi
 }
 
 string Register::getCRToutput(string input) { 
-    string CRT = ""; 
+    string CRT = "\n"; 
     int pixelpos = 0; 
     int xvalue = getValue(); 
     int addxvalue = 0; 

@@ -37,7 +37,7 @@ int main () {
     // Solution to puzzle 1 : 15680 
     cout << "The solution to part one is: " << puzzle.getSolution(1) << "\n"; 
     // Solution to puzzle 2 : ZFBFHGUP
-    cout << "The solution to part two is: \n" << puzzle.getSolution(2) << "\n"; 
+    cout << "The solution to part two is: " << puzzle.getSolution(2) << "\n"; 
 
     cout << "Tap x and enter to close the program. \n";
     char wait;
