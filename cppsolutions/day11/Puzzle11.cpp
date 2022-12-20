@@ -1,5 +1,4 @@
 #include <string>
-#include <iostream>
 
 #include "Puzzle11.hpp"
 #include "Round.hpp"
@@ -43,6 +42,5 @@ long long unsigned int Puzzle11::getSolution(int puzzlepart) {
             maxi2 = inspectionCounters[i]; 
         }
     }
-    cout << maxi1 << " Alalalah " << maxi2 << "alalao "; 
     return maxi1*maxi2; 
 };
