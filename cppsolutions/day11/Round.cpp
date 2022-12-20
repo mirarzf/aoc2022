@@ -46,7 +46,7 @@ Round::Round(string newinput) {
     string line; 
     stringstream monkeyInput; 
     commonMultiple = 1; 
-    vector<int> currDivTest; 
+    vector<long long unsigned int> currDivTest = {}; 
     while (inputss) { 
         getline(inputss, line); 
         monkeyInput << line; 
@@ -72,11 +72,8 @@ Round::Round(string newinput) {
         } else { // currDivTest[i] >= d 
             d = euclide(currDivTest[i], d); 
         }
-    }
-    
-    for (long long unsigned int i = 0; i < currDivTest.size(); i++) { 
         commonMultiple *= currDivTest[i]; 
-    } 
+    }
     commonMultiple /= d; 
 }
 
