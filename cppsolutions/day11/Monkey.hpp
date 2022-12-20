@@ -6,12 +6,11 @@
 
 class Monkey { 
     private: 
-    std::vector<int> startingItems; 
+    std::vector<long long unsigned int> startingItems; 
     std::string operation; 
-    int divisionTest; 
-    int monkeyFalse; 
-    int monkeyTrue; 
-    int inspectionCounter; 
+    long long unsigned int divisionTest; 
+    long long unsigned int monkeyFalse; 
+    long long unsigned int monkeyTrue; 
 
     public: 
     // Constructors 
@@ -19,17 +18,16 @@ class Monkey {
     Monkey(std::string stringInput); 
 
     // Getters 
-    int getNbOfStartingItems(); 
-    int getStartingItem(int i); 
-    int getNbOfInspections(); 
+    long long unsigned int getNbOfStartingItems(); 
+    long long unsigned int getStartingItem(long long unsigned int i); 
+    long long unsigned int getDivisorTest(); 
 
     // Setters 
-    void updateIC(); 
 
     // Others 
-    int getNewWorry(int worry); 
-    int testWorry(int worry); 
-    int getNextMonkey(int worry); 
+    long long unsigned int getNewWorry(long long unsigned int worry); 
+    bool testWorry(long long unsigned int worry); 
+    long long unsigned int getNextMonkey(long long unsigned int worry); 
 
 }; 
 
