@@ -15,7 +15,7 @@ class Puzzle11 {
 
     // Getters
     // virtual int getSolution(int puzzlepart) const; 
-    long long unsigned int getSolution(int puzzlepart); 
+    std::string getSolution(int puzzlepart); 
 
 
 }; 

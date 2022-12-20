@@ -19,7 +19,7 @@ Puzzle11::Puzzle11(string newinput) {
 }
 
 // Getters 
-long long unsigned int Puzzle11::getSolution(int puzzlepart) { 
+string Puzzle11::getSolution(int puzzlepart) { 
     Round round = Round(input); 
     if (puzzlepart == 1) { 
         for (int roundNb = 0; roundNb < 20; roundNb++ ) { 
@@ -42,5 +42,5 @@ long long unsigned int Puzzle11::getSolution(int puzzlepart) {
             maxi2 = inspectionCounters[i]; 
         }
     }
-    return maxi1*maxi2; 
+    return to_string(maxi1*maxi2); 
 };
