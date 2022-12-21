@@ -13,7 +13,7 @@ class Puzzle12 {
 
     // Getters
     // virtual int getSolution(int puzzlepart) const; 
-    string getSolution(int puzzlepart); 
+    std::string getSolution(int puzzlepart); 
 
 
 }; 

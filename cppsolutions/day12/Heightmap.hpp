@@ -8,9 +8,9 @@ class Heightmap {
     private: 
     int nrow, ncol; 
     std::vector<int> heights; 
+    std::vector<int> distances; 
     std::pair<int, int> start, end; 
-    int distances[nrow][ncol]; 
-    std::pair<int, int> predecessors[nrow][ncol]; 
+    std::vector<std::pair<int, int>> predecessors; 
 
     public: 
     // Constructors 
@@ -19,11 +19,12 @@ class Heightmap {
     // Getters 
     std::pair<int, int> getStart(); 
     std::pair<int, int> getEnd(); 
-    std::vector<std::pair<int, int>> getNeighbours(int i, int j); 
+    int getSize(); 
     std::pair<int, int> getPredecessor(int i, int j); 
+    int getLenPath(std::pair<int, int> startPoint); 
+    std::vector<std::pair<int, int>> getLowestElevationPoints(); 
 
     // Setters 
-    void updateDistancesAround(int i, int j); 
     void Dijkstra(); 
 }; 
 
